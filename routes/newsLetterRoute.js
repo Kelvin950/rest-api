@@ -1,0 +1,9 @@
+const express = require("express");
+const Router=  express.Router() ;
+const newsLetterController=  require("../controller/newsletterController")
+const auth =  require("../util/isAuth")
+Router.route("/")
+.post( auth.isAuth , auth.verifyAdmin,newsLetterController.newsLetter);
+
+
+module.exports =  Router;

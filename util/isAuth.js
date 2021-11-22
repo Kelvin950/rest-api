@@ -19,8 +19,25 @@ const authHeader =  req.get("Authorization");
  }
 
  if(!decoded){
-     errorHandler(req ,res,next  , "You are not authenticated" , 401);
+     errorHandler( "You are not authenticated" , 401);
  }
  req.userId =  decoded.id;
+ req.userAdmin =  decoded.admin
  next();
 }; 
+
+
+exports.verifyAdmin =  (req ,res, next)=>{
+
+    console.log(req.user)
+
+    if(req.userAdmin !== true){
+
+        errorHandler("Not an admin" , 401)
+    }
+
+
+    next();
+
+
+}

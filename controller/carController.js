@@ -1,16 +1,20 @@
 const Car = require("../Model/Car");
 const { errorHandler } = require("../util/errorHandler");
 
-exports.getCars = async (req, res, next) => {
+exports.getSearch = async (req, res, next) => {
   try {
-      const {search} =  req.query
-    let cars = await Car.find({$text:{$search:search}});
+      const {search} =  req.query;
+      search.toLowerCase().trim();
+
+    let cars = await Car.find({$text:{$search:search}}, {score:{$meta:"textScore"}}).sort({score:{$meta:"textScore"}});
     console.log(cars);
 
     if (!cars) {
       errorHandler("no cars found", 404);
     }
-
+        if(cars.length<1){
+          errorHandler("search not found" , 404);
+        }
     cars = cars.map((car) => {
       return {
         headPic: car.headPic,
@@ -23,7 +27,7 @@ exports.getCars = async (req, res, next) => {
 
     res.statusCode = 200;
     res.json({
-      message: "succeede1d",
+      message: "succeeded",
       cars: cars,
     });
   } catch (err) {
@@ -34,38 +38,33 @@ exports.getCars = async (req, res, next) => {
   }
 };
 
-exports.getSearch =  async(req , res ,next)=>{
+exports.getCars =  async(req , res ,next)=>{
 
-    const filters =  req.query;
-
+    
     try{
     
-        const cars =  await Car.find();
+        let cars =  await Car.find();
 
         if(!cars){
             
             errorHandler("cars not found" , 404);
         }
-
-        const  filteredCars=  cars.filter(car=>{
-
-            let isValid =  true ; 
-            for(key in filters){
-                console.log(key , car[key] , filters[key])
-                isValid =  isValid && car[key] == filters[key];
-            }
-            return isValid;
+        cars = cars.map((car) => {
+          return {
+            headPic: car.headPic,
+            model: car.model,
+            make: car.make,
+            price: car.price,
+            _id:car._id
+          };
         });
-
-         if(filteredCars.length < 1){
-             res.status(404);
-             res.json({message:"Search not found"});
-         }
-         res.status(200);
-         res.json({
-             message:"Succeeded",
-             search:filteredCars
-         })
+    
+        res.statusCode = 200;
+        res.json({
+          message: "succeeded",
+          cars: cars,
+        });
+        
     }catch(err){
         if (!err.statusCode) {
             err.statusCode = 500;
@@ -83,15 +82,9 @@ exports.getSingleCar = async (req , res, next)=>{
             if(!car){
                 errorHandler("Car not found" , 404);
             }
-            car = car.map((car) => {
-                return {
-                  headPic: car.headPic,
-                  model: car.model,
-                  make: car.make,
-                  price: car.price,
-                  _id:car._id
-                };
-              });
+          
+
+          
           
               res.status(200);
               res.json({

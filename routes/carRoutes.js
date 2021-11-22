@@ -2,16 +2,20 @@ const express =  require("express");
 
 const Router =  express.Router();
 const carController=   require("../controller/carController")
+const auth =  require("../util/isAuth")
 express.json()
 express.urlencoded({extended:false})
 
 
 Router.route("/")
-.get(carController.getCars)
+.get(auth.isAuth ,carController.getCars)
 
 Router.route("/search")
-.get(carController.getSearch)
+.get(auth.isAuth ,carController.getSearch)
 
 Router.route("/:type/:value")
-.get(carController.getCarOntype)
+.get(auth.isAuth ,carController.getCarOntype)
+
+Router.route("/:carId")
+.get(auth.isAuth ,carController.getSingleCar);
 module.exports  =Router;

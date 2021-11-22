@@ -7,6 +7,9 @@ const connectDb =  require("./database/connectDb");
 const { errorMonitor } = require("events");
 const adminRoute =  require("./routes/admin")
 const carRoute =  require("./routes/carRoutes")
+const authRoute =  require("./routes/UserRoute");
+
+const newSLetterRoute =  require("./routes/newsLetterRoute");
 require("dotenv").config();
  connectDb();
 app.use(logger("dev"));
@@ -49,13 +52,15 @@ app.use("/img" , express.static(path.resolve(__dirname , "public/img")))
 
 app.use("/admin" ,adminRoute);
 app.use("/car" , carRoute);
+app.use("/auth" , authRoute);
+app.use("/newsLetter"  , newSLetterRoute);
 app.use((error , req , res, next)=>{
          
            console.log(error)
     res.status(error.statusCode||500);
     res.json({
         errorStatusCode :  error.statusCode,
-        errorMessage:error.Message 
+        errorMessage:error.message
     });
     
 })

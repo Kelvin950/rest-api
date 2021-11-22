@@ -1,23 +1,23 @@
 const User = require("../model/User");
 const crypto = require("crypto");
-const { errorHandler } = require("../../util/errorHandler");
+const { errorHandler } = require("../util/errorHandler");
 const bcrypt = require("bcryptjs");
 const nodemailer = require("nodemailer");
 const jwt = require("jsonwebtoken");
 const sengridTransport = require("nodemailer-sendgrid-transport");
-const Token = require("../model/token");
+// const Token = require("../model/token");
 require("dotenv").config();
 
 const { validationResult } = require("express-validator");
 const passport = require("passport");
 const facebookTokenStrategy = require("passport-facebook-token");
-const transporter = nodemailer.createTransport(
-  sengridTransport({
-    auth: {
-      api_key: process.env.api_key,
-    },
-  })
-);
+// const transporter = nodemailer.createTransport(
+//   sengridTransport({
+//     auth: {
+//       api_key: process.env.api_key,
+//     },
+//   })
+// );
 
 const checkErrors = function (req, res, next, errorMessage, errorStatusCode) {
   const errors = validationResult(req);
@@ -42,12 +42,12 @@ exports.signUp = async (req, res, next) => {
     });
     const newUser = await user.save();
     console.log(newUser);
-    const info = await transporter.sendMail({
-      to: email,
-      from: process.env.myemail,
-      subject: "Verify your email",
-      html: "<h1>Verify email</h1>",
-    });
+    // const info = await transporter.sendMail({
+    //   to: email,
+    //   from: process.env.myemail,
+    //   subject: "Verify your email",
+    //   html: "<h1>Verify email</h1>",
+    // });
     res.status(200).json({
       message: "User created",
       user: newUser,
@@ -72,10 +72,11 @@ exports.login = async (req, res, next) => {
     }
     const isEqual = await bcrypt.compare(password, user.password);
     if (!isEqual) {
-      errorHandler(req, res, next, "password  do not match", 401);
+      errorHandler( "password  do not match", 401);
     }
     console.log(req.useragent);
     console.log(req.ip);
+   
     // const logInInfo  = await transporter.sendMail({
     //     to:email,
     //     from:process.env.myemail,
@@ -84,10 +85,11 @@ exports.login = async (req, res, next) => {
     //     <a href="http://localhost:8080/page/page1?q=2">Link</a>`
     // })
     const token = jwt.sign(
-      { email: user.email, id: user._id.toString() },
+      { email: user.email, id: user._id.toString() , admin:user.admin },
       process.env.secret,
       { expiresIn: "1h" }
     );
+   
     res.status(200).json({
       message: "Logged in",
       token: token,
