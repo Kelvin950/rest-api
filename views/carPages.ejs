@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%=title%></title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/carpages.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
+     
+</head>
+
+  
+
+<body>
+    <!-- <nav class="navbar navbar-expand-sm navbar-dark">
+        <div class="container-fluid">
+        
+          <a class="navbar-brand" href="/" style="font-size: 4rem;  ; letter-spacing: 0.06rem;"><img src="/img/photo_2021-11-22_19-41-05.jpg"  style="width: 80px; border-radius: 50%;"/> Wheel<span style="color: blue;">Site</span></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="mynavbar">
+            <ul class="navbar-nav me-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="/aboutus">About US</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/contact">Contact</a>
+              </li>
+            
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Dropdown</a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="/brand/Mercedez">Mercedes-Benz</a></li>
+                  <li><a class="dropdown-item" href="#">Hyundia</a></li>
+                  <li><a class="dropdown-item" href="#">Honda</a></li>
+                  <li><a class="dropdown-item" href="#">Toyota</a></li>
+                  <li><a class="dropdown-item" href="#">Ford</a></li>
+                  <li><a class="dropdown-item" href="#">Nissan</a></li>
+                  <li><a class="dropdown-item" href="#">Kia</a></li>
+                  <li><a class="dropdown-item" href="#">Mistubushi</a></li>
+                  
+                </ul>
+              </li>
+            </ul>
+            
+            <div>
+                <button class="btn btn-primary" style="color:#fff; font-size: 2rem">
+                 Login
+                </button>
+            </div>
+          </div>
+        </div>
+      </nav> -->
+      <%- include('navbar.ejs') %>
+      <% if(cars.length>0){ %>
+      <head>
+        
+        <div class="brand">
+            <h1><%=title%></h1>
+        </div>
+
+      </head>
+      <p class="linebreak"></p>
+      <section >
+
+        <%if(message){%>
+            <div class="message" style="margin:auto; margin-top: 30px; width: 30%; 
+          border: 1px solid  rgb(76, 76, 240) ;background-color: rgb(119, 119, 245);padding: 0.3rem; border-radius:10px ;text-align: center;font-size: 25px;">
+              <p><%=message%></p>
+          </div>
+        <% }%>
+        <%if(error){%>
+            <div class="message" style="margin:auto; margin-top: 30px; width: 30%; 
+          border: 1px solid rgb(233, 29, 29);background-color: rgb(243, 78, 78);padding: 0.3rem; border-radius:10px ;text-align: center;font-size: 25px;">
+              <p><%=error%></p>
+          </div>
+        <% }%>
+         
+        <div class="grid">
+                 <% for(car of cars){%>
+                <article class="card1 product-item">
+                    
+                    <div class="card__image">
+                        <img src="/<%=car.headPic%>" alt="">
+                    </div>
+                    <div class="card__content">
+                        <h2 class="model">
+                    <a  href="/car/<%=car._id%>"><%=car.model%> </a>
+                        </h2>
+                        <p class="price">
+                            GHC <%=car.price%>
+                        </p>
+                        <p class="make">
+                            <%=car.make%>
+                        </p>
+                        <% if(title==="favourite"){%>
+                            <form action="/deletefavorite/<%=car._id%>" method="POST">
+                                <p class="like"><button style="color: inherit;"><i class="far fa-trash-alt fa-3x"></i></button></p>
+                               </form>
+                        <%}else{%>
+                       <form action="/car/addfavorite/<%=car._id%>" method="POST">
+                        <p class="like"><button style="color: inherit;"><i class="far fa-heart fa-3x"></i></button></p>
+                       </form>
+                       <%}%>
+                    </div>
+                    
+                </article> 
+                <% } %>
+                <!-- <article class="card product-item">
+                    
+                    <div class="card__image">
+                        <img src="/img/aaron-huber-8qYE6LGHW-c-unsplash.jpg" alt="">
+                    </div>
+                    <div class="card__content">
+                        <h2 class="product__price">
+                            C300
+                        </h2>
+                        <p class="product__description">
+                            Mercedez
+                        </p>
+                    </div>
+                    
+                </article>
+
+                <article class="card product-item">
+                    
+                    <div class="card__image">
+                        <img src="/img/aaron-huber-8qYE6LGHW-c-unsplash.jpg" alt="">
+                    </div>
+                    <div class="card__content">
+                        <h2 class="product__price">
+                            C300
+                        </h2>
+                        <p class="product__description">
+                            Mercedez
+                        </p>
+                    </div>
+                    
+                </article>
+                <article class="card product-item">
+                    
+                    <div class="card__image">
+                        <img src="/img/aaron-huber-8qYE6LGHW-c-unsplash.jpg" alt="">
+                    </div>
+                    <div class="card__content">
+                        <h2 class="product__price">
+                            C300
+                        </h2>
+                        <p class="product__description">
+                            Mercedez
+                        </p>
+                    </div>
+                    
+                </article>
+              -->
+                
+        </div>
+
+        <div>
+
+        </div>
+    </section>
+    <%}else { %>
+        <div style="padding: 5rem; font-size: 2rem;font-weight: bolder;">
+         <p>No <%=title%> Found!</p>
+        </div>
+        <% } %>
+    <p class="linebreak"></p>
+    <section>
+        <div id="demo" class="carousel slide" data-bs-ride="carousel">
+
+            <!-- Indicators/dots -->
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+              <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+              <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+            </div>
+          
+            <!-- The slideshow/carousel -->
+            <div class="carousel-inner">
+              <div class="carousel-item active image">
+                <img src="/img/pexels-mike-120049.jpg" alt="Los Angeles" class="d-block w-100">
+                <div class="carouselover1">
+                    <h3>BOOK A TEST DRIVE NOW</h3>
+                    <p>
+                      Refined, composed and a pleasure to drive. Experience it for yourself by booking an appointment with your nearest Silver Star Auto Retailer at a time that suits you.
+                    </p>
+                    <button class="btn btn-primary">
+                        Book an appointment
+                    </button>
+                    </div>
+              </div>
+              <div class="carousel-item image">
+                <img src="/img/pexels-styves-exantus-8109632.jpg" alt="Chicago" class="d-block w-100">
+                <div class="carouselover2">
+                    <h3>BOOK A TEST DRIVE NOW</h3>
+                    <p>
+                      Refined, composed and a pleasure to drive. Experience it for yourself by booking an appointment with your nearest Silver Star Auto Retailer at a time that suits you.
+                    </p>
+                    
+                    <button class="btn btn-primary">
+                        Book an appointment
+                    </button>
+                    </div>
+              </div>
+              <div class="carousel-item image">
+                <img src="/img/r-nolan-1ZhZpP91olQ-unsplash.jpg" alt="New York" class="d-block w-100">
+                <div class="carouselover">
+                    <h3>BOOK A TEST DRIVE NOW</h3>
+                    <p>
+                      Refined, composed and a pleasure to drive. Experience it for yourself by booking an appointment with your nearest Silver Star Auto Retailer at a time that suits you.
+                    </p>
+                    
+                    <button class="btn btn-primary">
+                        Book an appointment
+                    </button>
+                    </div>
+              </div>
+            </div>
+          
+            <!-- Left and right controls/icons -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+              <span class="carousel-control-next-icon"></span>
+            </button>
+          </div>
+    </section>
+    <%- include('footer.ejs') %>
+
+   
+</body>
+</html>

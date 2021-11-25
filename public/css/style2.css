@@ -1,0 +1,270 @@
+@font-face {
+  font-family: " Helvetica", sans-serif;
+  src: url("../fonts/Helvetica.ttf");
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: " Helvetica", sans-serif;
+  src: url("../fonts/Helvetica Bold.ttf");
+  font-weight: bold;
+}
+
+html {
+  overflow-x: hidden;
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  color: #0c0c0c;
+  background-color: #ffffff;
+  overflow-x: hidden;
+}
+
+.navbar{
+
+  height: 6rem;
+  font-size: 2rem;
+  font-weight: bolder;
+  padding: 3rem;
+ background-color: black;
+ box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+ /* position:fixed; */
+ top: 0%;
+ left: 0;
+ width: 100%;
+ z-index:1;
+ opacity: 1;
+}
+.layout_padding {
+  padding: 75px 0;
+}
+
+.layout_padding2 {
+  padding: 45px 0;
+}
+
+.layout_padding2-top {
+  padding-top: 45px;
+}
+
+.layout_padding2-bottom {
+  padding-bottom: 45px;
+}
+
+.layout_padding-top {
+  padding-top: 75px;
+}
+
+.layout_padding-bottom {
+  padding-bottom: 75px;
+}
+
+.heading_container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.heading_container h2 {
+  font-size: 3rem;
+  margin: 0 10px 0 0;
+}
+
+.heading_container hr {
+  height: .8px;
+  background-color: #03de1c;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  border: none;
+}
+
+/*header section*/
+.hero_area {
+  height: 100vh;
+  background-image: url(../images/hero-bg.jpg);
+  background-size: cover;
+}
+
+.sub_page .hero_area {
+  height: auto;
+}
+
+.sub_page .about_section {
+  padding: 150px 0;
+}
+
+.sub_page .car_section {
+  margin-bottom: 75px;
+}
+
+.hero_area.sub_pages {
+  height: auto;
+}
+
+.header_section {
+  font-family: 'Roboto', sans-serif;
+}
+
+.header_section .container-fluid {
+  padding-right: 25px;
+  padding-left: 25px;
+}
+
+.header_section .nav_container {
+  margin: 0 auto;
+}
+
+.custom_nav-container.navbar-expand-lg .navbar-nav .nav-item .nav-link {
+  padding: 35px 15px 10px 15px;
+  color: #f9fcfb;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.custom_nav-container.navbar-expand-lg .navbar-nav .nav-item.active .nav-link, .custom_nav-container.navbar-expand-lg .navbar-nav .nav-item:hover .nav-link {
+  background-color: #03de1c;
+}
+
+a,
+a:hover,
+a:focus {
+  text-decoration: none;
+}
+
+a:hover,
+a:focus {
+  color: initial;
+}
+
+
+
+.about_section {
+  color: #f9fcfb;
+  background-image: url("/img/about-bg.jpg");
+  background-size: cover;
+}
+
+.about_section p {
+  margin: 55px 0;
+}
+
+.about_section .heading_container hr {
+  background-color: #f9fcfb;
+}
+
+.about_section a {
+  display: inline-block;
+  padding: 10px 50px;
+  background-color: #f9fcfb;
+  color: #050505;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+  border: 1px solid transparent;
+  
+  font-size: 1.5rem;
+  text-align: justify;
+  letter-spacing: 0.03rem;
+  word-spacing: 0.03rem;
+  
+}
+
+.about_section a:hover {
+  background-color: transparent;
+  border-color: #f9fcfb;
+  color: #f9fcfb;
+}
+
+.about_section p{
+
+  font-size: 1.5rem;
+  text-align: justify;
+  letter-spacing: 0.03rem;
+  word-spacing: 0.03rem;
+}
+
+
+p.linebreak{
+
+  width: 90%;
+ background-color:whitesmoke;
+  height: 0.1rem;
+  margin:0 auto;
+  margin-top:5rem ;
+}
+footer{
+
+  width: 100%;
+  padding: 5rem;
+  padding-top: 10rem;
+  font-size: 1.4rem;
+    background-color: black;
+}
+
+div.card{
+  padding: 5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  transition:transform .4s ease-in;
+}
+div.card:hover{
+  transform: scale(1.06);
+}
+div.card h2 {
+
+font-size: 2.1rem;
+letter-spacing: 0.02rem;
+
+
+font-weight: bolder;
+text-transform: capitalize;
+}
+
+div.card button{
+  border: none;
+  margin-top: 1.3rem;
+  padding: 0.5rem;
+  border-radius: .3rem;
+  font-size: 1.4rem;
+  color: white;
+  background-color: #000;
+  width: 80%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+}
+
+section.section-12{
+
+  padding: 5rem;
+  
+
+}
+
+section.section-12 h2{
+  font-size: 2.1rem;
+   letter-spacing:0.02rem ;
+   padding:0.9rem;
+   
+   font-weight: bold;
+}
+
+.col-md-3 h3{
+
+  font-size: 2.1rem;
+  letter-spacing:0.02rem ;
+  padding:0.9rem;
+  color:darkgray;
+  font-weight: bold;
+}
+
+section.section-12 li,section.section-12 p{
+
+  font-size: 1.5rem ;
+  letter-spacing: 0.02rem;
+  padding: 0.2rem;
+  color: #fff;
+
+}

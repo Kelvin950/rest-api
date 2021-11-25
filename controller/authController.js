@@ -1,4 +1,4 @@
-const User = require("../model/User");
+const User = require("../Model/User")
 const crypto = require("crypto");
 const { errorHandler } = require("../util/errorHandler");
 const bcrypt = require("bcryptjs");
@@ -33,6 +33,7 @@ exports.signUp = async (req, res, next) => {
     const email = req.body.email;
     const password = req.body.password;
 
+    console.log("worked")
     const hashedpassword = await bcrypt.hash(password, 12);
     console.log(hashedpassword);
     const user = new User({
@@ -48,15 +49,13 @@ exports.signUp = async (req, res, next) => {
     //   subject: "Verify your email",
     //   html: "<h1>Verify email</h1>",
     // });
-    res.status(200).json({
-      message: "User created",
-      user: newUser,
-    });
+    // res.status(200).json({
+    //   message: "User created",
+    //   user: newUser,
+    // });
+    res.redirect("/login")
   } catch (err) {
-    if (!err.statusCode) {
-      err.statusCode = 500;
-    }
-    next(err);
+    res.redirect("/signup")
   }
 };
 
@@ -66,6 +65,7 @@ exports.login = async (req, res, next) => {
     const email = req.body.email;
     const password = req.body.password;
 
+    console.log(email , password)
     const user = await User.findOne({ email: email });
     if (!user) {
       errorHandler("User does not exist", 401);
@@ -84,25 +84,40 @@ exports.login = async (req, res, next) => {
     //     html:`<h1>You just logged in </h1><p>IpAddress:${req.ip}</p><p>Browser:${req.useragent.browser}</p>
     //     <a href="http://localhost:8080/page/page1?q=2">Link</a>`
     // })
-    const token = jwt.sign(
-      { email: user.email, id: user._id.toString() , admin:user.admin },
-      process.env.secret,
-      { expiresIn: "1h" }
-    );
+    // const token = jwt.sign(
+    //   { email: user.email, id: user._id.toString() , admin:user.admin },
+    //   process.env.secret,
+    //   { expiresIn: "1h" }
+    // );
+     
+  
    
-    res.status(200).json({
-      message: "Logged in",
-      token: token,
-      email: user.email,
-      name: user.name,
-      admin: user.admin,
-    });
+    // res.status(200).json({
+    //   message: "Logged in",
+    //   token: token,
+    //   email: user.email,
+    //   name: user.name,
+    //   admin: user.admin,
+    // });
+    req.session.isLoggedIn = true;
+    req.session.user = user;
+ 
+    res.redirect("/");
   } catch (err) {
-    if (!err.statusCode) {
-      err.statusCode = 500;
-    }
-    next(err);
+    // if (!err.statusCode) {
+    //   err.statusCode = 500;
+    // }
+    // next(err);
+    console.log(err)
+    res.redirect("/login");
   }
+};
+
+exports.postLogout = (req, res, next) => {
+  req.session.destroy(err => {
+    console.log(err);
+    res.redirect('/');
+  });
 };
 
 exports.requestPasswordReset = async (req, res, next) => {

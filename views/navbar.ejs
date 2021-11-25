@@ -1,0 +1,53 @@
+<nav class="navbar navbar-expand-sm navbar-dark">
+    <div class="container-fluid">
+    
+      <a class="navbar-brand" href="/" style="font-size: 4rem;  ; letter-spacing: 0.06rem;"><img src="/img/photo_2021-11-22_19-41-05.jpg"  style="width: 40px; border-radius: 50%;"/> Wheel<span style="color: blue;">Site</span></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mynavbar">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/contact">Contact</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Brands</a>
+            <ul class="dropdown-menu" style="width: 50rem;">
+              <li style="padding: 1.2rem; font-size: 1.5rem; font-weight: bolder;"><a class="dropdown-item" href="/brand/Mercedes-Benz">Mercedes-Benz</a></li>
+              <li style="padding: 1.2rem; font-size: 1.5rem; font-weight: bolder;"><a class="dropdown-item" href="/brand/BMW">BMW</a></li>
+              <li style="padding: 1.2rem; font-size: 1.5rem; font-weight: bolder;"><a class="dropdown-item" href="/brand/HYUNDAI">HYUNDAI</a></li>
+              <li style="padding: 1.2rem; font-size: 1.5rem; font-weight: bolder;"><a class="dropdown-item" href="/brand/HONDA">HONDA</a></li> 
+              <li style="padding: 1.2rem; font-size: 1.5rem; font-weight: bolder;"><a class="dropdown-item" href="/brand/KIA">kIA</a></li>
+              <li style="padding: 1.2rem; font-size: 1.5rem; font-weight: bolder;"><a class="dropdown-item" href="/brand/CHEVEROLET">CHEVEROLET</a></li>
+              <li style="padding: 1.2rem; font-size: 1.5rem; font-weight: bolder;"><a class="dropdown-item" href="/brand/Nissan">NISSAN</a></li>  
+              <li style="padding: 1.2rem; font-size: 1.5rem; font-weight: bolder;"><a class="dropdown-item" href="/brand/TOYOTA">TOYOTA</a></li>  
+            </ul>
+          </li>
+        </ul>
+        
+        <%if(isAuthenticated){%>
+          <div>
+            <h3 style="color: #fff;"><a href="/favorite"><%=username%></a></h3>
+          </div>
+   <div>
+       <button class="btn btn-primary" style="color:#fff; font-size: 2rem">
+        <a href="/logout">Logout</a>
+       </button>
+   </div>
+   <%}else{%>
+     <div>
+      <a href="/login">
+       <button class="btn btn-primary" style="color:#fff; font-size: 2rem">
+        Login
+       </button>  </a>
+       
+   </div>
+
+   <%}%>
+      </div>
+    </div>
+    
+  </nav>

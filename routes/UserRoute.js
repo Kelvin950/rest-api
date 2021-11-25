@@ -1,14 +1,16 @@
 const express =  require("express");
 const {body} =  require("express-validator");
-const User =  require("../model/User");
+const User =  require("../Model/User");
 const authController =  require("../controller/authController");
 const router =  express.Router();
 const passport =  require("passport")
-
+const auth =  require("../service/auth");
 router.use(express.json());
+router.use(express.urlencoded({extended:false}))
 
 
 router.route("/signup")
+.get(auth.signup)
 .post(
  
     [
@@ -37,14 +39,15 @@ router.route("/signup")
 
 
 router.route("/login" )
+.get(auth.login)
 .post(
-[
-        body("email" ,"Incorrect email").isEmail().trim() , body("password" , "Password should be eight to 16 characters long and alphanumeric").isAlphanumeric().isLength({min:8 , max:16})
-    ],
+// [
+//         body("email" ,"Incorrect email").isEmail().trim() , body("password" , "Password should be eight to 16 characters long and alphanumeric").isAlphanumeric().isLength({min:8 , max:16})
+//     ],
     authController.login
 );
 
-
+router.get("/logout" , authController.postLogout);
 router.route("/requestPasswordReset")
 .post(authController.requestPasswordReset);
 router.route("/resetPassword")

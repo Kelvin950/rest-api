@@ -7,9 +7,9 @@ express.json()
 express.urlencoded({extended:false})
 
 Router.route("/")
-.post( auth.isAuth , auth.verifyAdmin , adminController.createData)
+.post(adminController.createData)
 
-Router.route("/:carId")
-.put(auth.isAuth , auth.verifyAdmin , adminController.updateCarDet)
-.delete(auth.isAuth , auth.verifyAdmin , adminController.deleteCarDet);
+// Router.route("/:carId")
+// .put(auth.isAuth , auth.verifyAdmin , adminController.updateCarDet)
+// .delete(auth.isAuth , auth.verifyAdmin , adminController.deleteCarDet);
 module.exports =  Router

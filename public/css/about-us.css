@@ -1,0 +1,111 @@
+/*
+HTML 5 Template Name: 
+File: About Us - 11 CSS
+Author: OS Templates
+Author URI: https://www.os-templates.com/
+Licence: <a href="https://www.os-templates.com/template-terms">Website Template Licence</a>
+*/
+
+
+ 
+
+.navbar{
+
+    height: 6rem;
+    font-size: 1.2rem;
+    font-weight: bolder;
+    padding: 1rem;
+   background-color: black;
+   /* position:fixed; */
+   top: 0%;
+   left: 0;
+   width: 100%;
+   z-index:1;
+   opacity: 1;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+#about-us{display:block; width:100%; line-height:1.6em;}
+#about-us h2{margin-bottom:50px; padding-bottom:40px; font-size:80px; text-align:center; text-transform:uppercase; border-bottom:1px solid #CCCCCC;} /* DEMO USE ONLY - CAN BE DELETED */
+
+#about-us #about-intro{margin-bottom:50px;}
+#about-us #about-intro p{margin:20px 0 0 0; padding:0;}
+#about-us #about-intro p:first-child{margin-top:0;}
+
+#about-us #team{margin-bottom:0;}
+#about-us #team ul{margin:0; padding:0; list-style:none;}
+#about-us #team ul li{margin-bottom:30px;}
+#about-us #team ul li figure{position:relative; text-align:center;}
+#about-us #team ul li figure img{padding:9px; border:1px solid #CCCCCC;}
+#about-us #team ul li figure figcaption{display:none; position:absolute; top:10px; left:10px; width:280px; height:200px; overflow:hidden; color:#FFFFFF; background-color:#000000; background:hsla(0, 0%, 0%, 0.8);}
+#about-us #team ul li:hover figure figcaption{display:block;}
+#about-us #team ul li figure figcaption p{margin:15px 15px 0 15px; padding:0;}
+#about-us #team ul li figure figcaption p:first-child{margin-top:35px;}
+#about-us #team ul li figure figcaption .team_name{font-weight:bold;}
+#about-us #team ul li figure figcaption .team_title{margin:0; font-size:11px; line-height:normal;}
+#about-us #team ul li figure figcaption .team_description{text-align:left;}
+
+footer{
+
+    width: 100%;
+    padding: 5rem;
+    padding-top: 10rem;
+    font-size: 1.4rem;
+      
+}
+
+div.card{
+    padding: 5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+    transition:transform .4s ease-in;
+}
+div.card:hover{
+    transform: scale(1.06);
+}
+div.card h2 {
+
+  font-size: 2.1rem;
+  letter-spacing: 0.02rem;
+  
+
+  font-weight: bolder;
+  text-transform: capitalize;
+}
+
+div.card button{
+    border: none;
+    margin-top: 1.3rem;
+    padding: 0.5rem;
+    border-radius: .3rem;
+    font-size: 2rem;
+    color: white;
+    background-color: #000;
+    width: 80%;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+}
+
+section.section-12{
+
+    padding: 5rem;
+    
+
+}
+
+section.section-12 h1 , h2, h3{
+    font-size: 2.1rem;
+     letter-spacing:0.02rem ;
+     padding:0.9rem
+}
+
+section.section-12 li,section.section-12 p{
+  
+    font-size: 1.5rem ;
+    letter-spacing: 0.02rem;
+    padding: 0.2rem;
+    color: #fff;
+
+}

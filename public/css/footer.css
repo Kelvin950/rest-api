@@ -1,0 +1,85 @@
+
+:root{
+  
+    font-size: 62.5%;
+}
+p.linebreak{
+
+    width: 90%;
+   background-color:whitesmoke;
+    height: 0.1rem;
+    margin:0 auto;
+    margin-top:5rem ;
+}
+
+footer{
+
+    width: 100%;
+    padding: 5rem;
+    padding-top: 10rem;
+    font-size: 1.4rem;
+      background-color: black;
+}
+
+div.card{
+    padding: 5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+    transition:transform .4s ease-in;
+}
+div.card:hover{
+    transform: scale(1.06);
+}
+div.card h2 {
+
+  font-size: 2.1rem;
+  letter-spacing: 0.02rem;
+  
+
+  font-weight: bolder;
+  text-transform: capitalize;
+}
+
+div.card button{
+    border: none;
+    margin-top: 1.3rem;
+    padding: 0.5rem;
+    border-radius: .3rem;
+    font-size: 2rem;
+    color: white;
+    background-color: #000;
+    width: 80%;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+}
+
+section.section-12{
+
+    padding: 5rem;
+    
+
+}
+
+section.section-12 h2{
+    font-size: 2.1rem;
+     letter-spacing:0.02rem ;
+     padding:0.9rem;
+     
+     font-weight: bold;
+}
+  
+ .col-md-3 h3{
+
+    font-size: 2.1rem;
+    letter-spacing:0.02rem ;
+    padding:0.9rem;
+    color:darkgray;
+    font-weight: bold;
+}
+
+section.section-12 li,section.section-12 p{
+  
+    font-size: 1.5rem ;
+    letter-spacing: 0.02rem;
+    padding: 0.2rem;
+    color: #fff;
+
+}

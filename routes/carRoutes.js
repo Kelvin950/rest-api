@@ -11,11 +11,17 @@ Router.route("/")
 .get(auth.isAuth ,carController.getCars)
 
 Router.route("/search")
-.get(auth.isAuth ,carController.getSearch)
+.get(carController.getSearch)
 
-Router.route("/:type/:value")
-.get(auth.isAuth ,carController.getCarOntype)
+Router.route("/brand/:make")
+.get(carController.getCarOnMake);
 
-Router.route("/:carId")
-.get(auth.isAuth ,carController.getSingleCar);
-module.exports  =Router;
+
+
+// Router.route("/:type/:value")
+// .get(auth.isAuth ,carController.getCarOntype)
+
+Router.route("/car/:carId")
+.get(carController.getSingleCar);
+
+ module.exports  =Router;

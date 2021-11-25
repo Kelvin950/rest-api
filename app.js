@@ -7,9 +7,14 @@ const connectDb =  require("./database/connectDb");
 const { errorMonitor } = require("events");
 const adminRoute =  require("./routes/admin")
 const carRoute =  require("./routes/carRoutes")
+const session =  require("express-session");
 const authRoute =  require("./routes/UserRoute");
-
+const homeRoute =  require("./routes/home");
 const newSLetterRoute =  require("./routes/newsLetterRoute");
+const flash =  require("connect-flash");
+const testDriveRoute =  require("./routes/testDriveroute");
+const favRoute =  require("./routes/favourites");
+const User =  require("./Model/User")
 require("dotenv").config();
  connectDb();
 app.use(logger("dev"));
@@ -44,15 +49,50 @@ const fileStorage = multer.diskStorage({
       cb(null, false);
     }
   };
-
+  app.set('views', path.join(__dirname, 'views'));
+  app.set('view engine', 'ejs');
   app.use(
     multer({ storage: fileStorage, fileFilter: fileFilter }).fields([{ name: 'image', maxCount: 1 }, { name: 'gallery', maxCount: 5}])
   );
 app.use("/img" , express.static(path.resolve(__dirname , "public/img")))
-
+app.use("/css" , express.static(path.resolve(__dirname , "public/css")));
+app.use("/fonts" , express.static(path.resolve(__dirname , "public/fonts")));
+app.use("/js" , express.static(path.resolve(__dirname , "public/js")))
+app.use("/scss" , express.static(path.resolve(__dirname , "public/scss")));
+app.use("/vendor" , express.static(path.resolve(__dirname , "public/vendor")));
+app.use(
+  session({
+    secret: 'my secret',
+    resave: false,
+    saveUninitialized: false,
+  
+  }));
+  app.use(flash());
+   app.use((req, res, next) => {
+    if (!req.session.user) {
+      return next();
+    }
+    User.findById(req.session.user._id)
+      .then(user => {
+        req.user = user;
+        next();
+      })
+      .catch(err => console.log(err));
+  });
+  app.use((req, res, next) => {
+    res.locals.isAuthenticated = req.session.isLoggedIn;
+    if(req.user)res.locals.username = req.user.name
+    else res.locals.username = null
+   
+    next();
+  });
+ 
+app.use("/" , homeRoute);
 app.use("/admin" ,adminRoute);
-app.use("/car" , carRoute);
-app.use("/auth" , authRoute);
+app.use(carRoute);
+app.use(authRoute);
+app.use(testDriveRoute);
+app.use(favRoute);
 app.use("/newsLetter"  , newSLetterRoute);
 app.use((error , req , res, next)=>{
          
@@ -65,7 +105,11 @@ app.use((error , req , res, next)=>{
     
 })
 
+app.use((req ,res,next)=>{
 
+  res.statusCode=404 ;
+  res.render("Errorpage");
+})
 
 app.listen(3000 , ()=>{
     console.log("http://localhost:3000")
