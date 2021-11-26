@@ -12,6 +12,7 @@ const checkErrors = function (req, res, next, errorMessage, errorStatusCode) {
 exports.postBook = async (req,res,next)=>{
 
 try{
+    console.log(req.body.name)
     checkErrors(req, res, next, "Validation failed", 422);
     const {name , phone , model , make , date , time} = req.body
 

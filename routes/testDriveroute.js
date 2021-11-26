@@ -17,7 +17,7 @@ Router.route("/testdrive")
 //     res.redirect("/")
 // })
 Router.post("/testdrive/drive" , [
-    body("name" , "Username should be alphabetical").isAlpha().not().isEmpty().trim() , body("phone" , "Phone number should not be empty").not().isEmpty().trim() ,
+    body("name" , "Username should be alphabetical").isAlpha().notEmpty().trim() , body("phone" , "Phone number should not be empty").not().isEmpty().trim(),
     body("model" , "Should not be empty").not().isEmpty().trim(), 
     body("make" , "").custom((value , {req})=>{
         return   Car.find({$text:{$search:value}}).then(model1=>{
