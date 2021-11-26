@@ -6,7 +6,7 @@ const adminController=   require("../controller/adminController")
 const auth =  require("../util/isAuth")
 Router.use(express.json());
 Router.use(express.urlencoded({extended:false}))
-Router.route("/admin/createData" ,auth.isAuth , auth.isAdmin)
+Router.route("/admin/createData" )
 .post(adminController.createData)
 
 Router.get("/admin",  adminController.getAdminLogin );

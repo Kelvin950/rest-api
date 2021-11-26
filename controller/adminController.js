@@ -40,11 +40,12 @@ exports.createData = async (req, res, next) => {
       seating,
       horsepower,
       fueltype,
-      transmission,
+      transmission,description,
       enginetype,
       price,
     } = req.body;
 
+    console.log(req.files["gallery"])
     const headPic = req.files["image"][0].path.replace(/\\/g, "/").slice(7);
     const otherImages = req.files["gallery"].map((g) => {
       return g.path.replace(/\\/g, "/").slice(7);
@@ -55,6 +56,7 @@ exports.createData = async (req, res, next) => {
       make: make.toUpperCase(),
       price: +price,
       year: year,
+      description:description,
       headPic: headPic,
       otherImages: otherImages,
       specification: {
@@ -70,13 +72,13 @@ exports.createData = async (req, res, next) => {
 
     res.status(200);
    
-    res.redirect("")
+    res.json({
+      message:"successful" , car:saveCarDetails
+    })
   } catch (err) {
     // console.log(err)
-    let error=err.data.map(data=>data.msg).join('\n')
-    req.flash("message" ,error )
-    // console.log(error);
-    res.redirect("")
+    
+         next(err)
   }
 };
 
@@ -309,7 +311,7 @@ try{
          if(books.length<=0){
              
         return  res.render("admin/bookings" , { title:"Bookings",
-            books:[]
+            books:[] , message:null , error:null
           })
 
          }
@@ -351,7 +353,7 @@ try{
          });
 
 }catch(err){
-      //  console.log(err)
+       console.log(err)
   res.statusCode = 404
 
 }
@@ -363,7 +365,7 @@ try{
 exports.acceptBookings=  async (req ,res,next)=>{
   
   try{
-
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     const bookId = req.params.bookId ;
     const specificId =  req.params.specificId
    const book =  await Book.findById(bookId).populate("user");
@@ -373,6 +375,7 @@ exports.acceptBookings=  async (req ,res,next)=>{
     req.flash("error" , "specific booking does not exist");
    return res.redirect("/admin/bookings")
    }
+   console.log(book.user.email)
     const specificBook =  book.books.find(book=>book._id ===specificId )
    const msg = {
     to: book.user.email, // Change to your recipient
@@ -380,7 +383,7 @@ exports.acceptBookings=  async (req ,res,next)=>{
    
    templateId:"d-c8237dac574f4dbfa075e3bac3dee369",
    dynamicTemplateData:{
-       subject:"Your appointment has beeen accepted",
+    subject:`Sorry. Your appointment with has beeen accepted`,
        name:"Some one" ,
        city:"Denver"
    }
@@ -395,8 +398,11 @@ exports.acceptBookings=  async (req ,res,next)=>{
 
   }catch(err){
 
-    // console.log(err)
+    console.log(err.response.body)
     res.statusCode = 404
+    
+    req.flash("error" ,"Internal Server error")
+    res.redirect("/admin/bookings")
   }
   
 
@@ -405,7 +411,7 @@ exports.acceptBookings=  async (req ,res,next)=>{
 exports.declineBookings=  async (req ,res,next)=>{
   
   try{
-
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     const bookId = req.params.bookId ;
     const specificId =  req.params.specificId
    const book =  await Book.findById(bookId).populate("user");
@@ -415,14 +421,16 @@ exports.declineBookings=  async (req ,res,next)=>{
     req.flash("error" , "specific booking does not exist");
    return res.redirect("/admin/bookings")
    }
-    const specificBook =  book.books.find(book=>book._id ===specificId )
+  //  console.log(book.books);
+    const specificBook =  book.books.find(book=>book._id ===specificId );
+       
    const msg = {
     to: book.user.email, // Change to your recipient
     from: "twofriends082@gmail.com", // Change to your verified sender
    
    templateId:"d-c8237dac574f4dbfa075e3bac3dee369",
    dynamicTemplateData:{
-       subject:"Sorry. Your appointment has beeen declined",
+       subject:`Sorry. Your appointment has beeen declined`,
        name:"Some one" ,
        city:"Denver"
    }
@@ -437,8 +445,10 @@ exports.declineBookings=  async (req ,res,next)=>{
 
   }catch(err){
 
-    // console.log(err)
+    console.log(err)
     res.statusCode = 404
+    req.flash("error" ,"Internal Server error")
+    res.redirect("/admin/bookings")
   }
   
 

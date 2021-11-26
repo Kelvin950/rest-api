@@ -24,7 +24,7 @@ price:{
     type:Number ,
     required:true
 } ,
-
+description:String,
 headPic:{
     type:String,
     required:true

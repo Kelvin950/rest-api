@@ -53,6 +53,8 @@ exports.newsLetter = async (req , res, next)=>{
 })} catch(err){
     // console.log(err);
     res.statusCode = 404;
+    req.flash("error", "Internal Server Error 500");
+    return  res.redirect("/admin/newsLetter")
   }
 
  }

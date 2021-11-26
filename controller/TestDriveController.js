@@ -65,7 +65,8 @@ exports.getTestDrive  = (req ,res,next)=>{
         message=message[0]
     }else{
         message=null;
-    }
+     }
+    // console.log(message)
     res.render("book" , {
         message:message ,
         title:"Test Drive"

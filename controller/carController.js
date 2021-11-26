@@ -188,7 +188,7 @@ exports.getCarOnMake   = async (req,res,next)=>{
   try{
  
       //  const obj = {[type]:value}
-   let cars =  await Car.find({ make:make.toUpperCase() })
+   let cars =  await Car.find({$text:{$search:make}}, {score:{$meta:"textScore"}}).sort({score:{$meta:"textScore"}});
      
      if(cars.length<=0){
    return   res.render("carPages" , {
@@ -232,7 +232,7 @@ exports.getCarOnMake   = async (req,res,next)=>{
  
  
   }catch(err){
-        
+        console.log(err);
     res.statusCode  =  errorCode(err);
  }};
 
