@@ -1,0 +1,110 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/admin/css/bookings.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
+    <title><%=title%></title>
+
+</head>
+<body>
+
+    <article style="background-image: url(/css/admin/images/bg-01.jpg);">
+        <header style="padding: 20px; text-decoration: underline; color: black;">
+            <h2>
+                <a href="/admin/adminPanel" style="color: black;"><i class="fas fa-home fa-2x"></i></a>
+            </h2>
+        </header>
+    <h1><i class="fas fa-book fa-2x"> Bookings</i></h1>
+
+    <%if(message){%>
+        <div class="message" style="margin:auto; margin-top: 30px; width: 30%; 
+      border: 1px solid  rgb(76, 76, 240) ;background-color: rgb(119, 119, 245);padding: 0.3rem; border-radius:10px ;text-align: center;font-size: 25px;">
+          <p><%=message%></p>
+      </div>
+    <% }%>
+    <%if(error){%>
+        <div class="message" style="margin:auto; margin-top: 30px; width: 30%; 
+      border: 1px solid rgb(233, 29, 29);background-color: rgb(243, 78, 78);padding: 0.3rem; border-radius:10px ;text-align: center;font-size: 25px;">
+          <p><%=error%></p>
+      </div>
+    <% }%>
+     
+
+    <section>
+
+        <% if(books.length>0){%>
+             <% for(book of books){%>
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title"><%=book.name%></h4>
+              <h4 class="card-title"><%=book.make%> <%=book.model%> </h4>
+              <p class="card-text"> <%=book.date%> <%=book.time%></p>
+              <form action="/admin/declineBookings/<%=book.parent_id%>/<%=book._id%>" method="POST">
+                <button   class="decline">
+                    Decline
+                   </button> 
+              </form>
+              <form action="/admin/acceptBookings/<%=book.parent_id%>/<%=book._id%>" method="POST">
+                <button class="accept">
+                    Accept
+                   </button>
+              </form>
+             
+            </div>
+          </div> 
+          <%}%>
+          <!-- <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">name</h4>
+              <h4 class="card-title">Mercedez Benz</h4>
+              <p class="card-text">25th march 2021 20:00</p>
+              <button class="decline">
+               Decline
+              </button>
+              <button class="accept">
+               Accept
+              </buttonc>
+            </div>
+          </div> 
+          <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">name</h4>
+              <h4 class="card-title">Mercedez Benz</h4>
+              <p class="card-text">25th march 2021 20:00</p>
+              <button class="decline">
+               Decline
+              </button>
+              <button class="accept">
+               Accept
+              </buttonc>
+            </div>
+          </div> 
+          <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">name</h4>
+              <h4 class="card-title">Mercedez Benz</h4>
+              <p class="card-text">25th march 2021 20:00</p>
+              <button class="decline">
+               Decline
+              </button>
+              <button class="accept">
+               Accept
+              </buttonc>
+            </div>
+          </div>  -->
+          <%}else { %>
+            <div style="padding: 5rem; font-size: 2rem;font-weight: bolder;">
+             <p>No bookings Found!</p>
+            </div>
+            <% } %>
+    </section>
+</article>
+</body>
+</html>

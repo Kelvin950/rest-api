@@ -2,14 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+   
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
   <link rel="stylesheet" href="css/Homestyle.css"/>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
-    <title>Document</title>
+    <title><%=title%></title>
 </head>
 <body>
     <nav class="navbar navbar-expand-sm navbar-dark">
@@ -82,11 +84,11 @@
             <div class="carouselover1">
                 <h3>BOOK A TEST DRIVE NOW</h3>
                 <p>
-                  Refined, composed and a pleasure to drive. Experience it for yourself by booking an appointment with your nearest Silver Star Auto Retailer at a time that suits you.
+                  Refined, composed and a pleasure to drive. Experience it for yourself by booking an appointment with your nearest Two Friends and Co Company Retailer at a time that suits you.
                 </p>
                 
                 <button class="btn btn-primary">
-                    Book an appointment
+                  <a  href="/testdrive">Book an appointment</a>
                 </button>
                 </div>
           </div>
@@ -95,11 +97,11 @@
             <div class="carouselover2">
                 <h3>BOOK A TEST DRIVE NOW</h3>
                 <p>
-                  Refined, composed and a pleasure to drive. Experience it for yourself by booking an appointment with your nearest Silver Star Auto Retailer at a time that suits you.
+                  Refined, composed and a pleasure to drive. Experience it for yourself by booking an appointment with your nearest Two Friends and Co Company Retailer at a time that suits you.
                 </p>
                 
                 <button class="btn btn-primary">
-                    Book an appointment
+                  <a  href="/testdrive">Book an appointment</a>
                 </button>
                 </div>
           </div>
@@ -108,11 +110,11 @@
             <div class="carouselover">
                 <h3>BOOK A TEST DRIVE NOW</h3>
                 <p>
-                  Refined, composed and a pleasure to drive. Experience it for yourself by booking an appointment with your nearest Silver Star Auto Retailer at a time that suits you.
+                  Refined, composed and a pleasure to drive. Experience it for yourself by booking an appointment with your nearest Two Friends and Co Company Retailer at a time that suits you.
                 </p>
                 
                 <button class="btn btn-primary">
-                    Book an appointment
+                  <a  href="/testdrive">Book an appointment</a>
                 </button>
                 </div>
           </div>
@@ -127,6 +129,13 @@
         </button>
       </div>
 
+      <div class="searchbar">
+        <form class="d-flex" action="/search" method="GET">
+          <input class="" type="text" placeholder="Search by keyword eg Mercedez" name="search">
+          <!-- <button class="btn btn-primary" type="button"><i class="fas fa-search fa-2x"></i></button> -->
+          <input type="submit" class="btn btn-primary" value="Search">  
+        </form>
+      </div>
       <p class="linebreak"></p>
 <section class="section1">
 
@@ -136,7 +145,7 @@
         As the leading automotive distributor in Ghana
     </h2>
 <p>
-    At Silver Star Auto we are proud of the incredible accomplishments that we’ve undertaken over the years. Here are a few highlights of what we’ve achieved so far
+    At Two Friends and Co Company we are proud of the incredible accomplishments that we’ve undertaken over the years. Here are a few highlights of what we’ve achieved so far
 </p>
     </div>
     <div id="demo" class="carousel slide achievements" data-bs-ride="carousel">
@@ -153,7 +162,7 @@
           <div class="carousel-item active">
             <div class="achievement">
                 <h1>2019</h1>
-                <p>Silver Star Auto Limited is a leading automobile firm in Ghana that has been synonymous with luxury for over 20 years. We started our operations in 1996 and now have branches in Accra, Tema and Kumasi to cater to all your sales and servicing needs.As the authorized distributors of Mercedes-Benz, Peugeot and Citroën brands of vehicles in Ghana, our product line covers the full spectrum of automobile needs including saloon cars, SUVs, vans, trucks and buses.
+                <p>Two Friends and Co Company Limited is a leading automobile firm in Ghana that has been synonymous with luxury for over 20 years. We started our operations in 1996 and now have branches in Accra, Tema and Kumasi to cater to all your sales and servicing needs.As the authorized distributors of Mercedes-Benz, Peugeot and Citroën brands of vehicles in Ghana, our product line covers the full spectrum of automobile needs including saloon cars, SUVs, vans, trucks and buses.
                   We also deal in the sale of genuine spare parts, and are authorized distributors of Energizer Batteries, Power Oils and Motul Oils in Ghana. We guarantee reliable after-sales service support, including body and paint repair works..</p>
                 
             </div>
@@ -161,7 +170,7 @@
           <div class="carousel-item">
             <div class="achievement">
                 <h1>2016</h1>
-                <p>Silver Star Auto Limited is a leading automobile firm in Ghana that has been synonymous with luxury for over 20 years. We started our operations in 1996 and now have branches in Accra, Tema and Kumasi to cater to all your sales and servicing needs.As the authorized distributors of Mercedes-Benz, Peugeot and Citroën brands of vehicles in Ghana, our product line covers the full spectrum of automobile needs including saloon cars, SUVs, vans, trucks and buses.
+                <p>Two Friends and Co Company Limited is a leading automobile firm in Ghana that has been synonymous with luxury for over 20 years. We started our operations in 1996 and now have branches in Accra, Tema and Kumasi to cater to all your sales and servicing needs.As the authorized distributors of Mercedes-Benz, Peugeot and Citroën brands of vehicles in Ghana, our product line covers the full spectrum of automobile needs including saloon cars, SUVs, vans, trucks and buses.
                   We also deal in the sale of genuine spare parts, and are authorized distributors of Energizer Batteries, Power Oils and Motul Oils in Ghana. We guarantee reliable after-sales service support, including body and paint repair works...</p>
                 
             </div>
@@ -169,7 +178,7 @@
           <div class="carousel-item">
             <div class="achievement">
                 <h1>2015</h1>
-                <p>Silver Star Auto Limited is a leading automobile firm in Ghana that has been synonymous with luxury for over 20 years. We started our operations in 1996 and now have branches in Accra, Tema and Kumasi to cater to all your sales and servicing needs.As the authorized distributors of Mercedes-Benz, Peugeot and Citroën brands of vehicles in Ghana, our product line covers the full spectrum of automobile needs including saloon cars, SUVs, vans, trucks and buses.
+                <p>Two Friends and Co Company Limited is a leading automobile firm in Ghana that has been synonymous with luxury for over 20 years. We started our operations in 1996 and now have branches in Accra, Tema and Kumasi to cater to all your sales and servicing needs.As the authorized distributors of Mercedes-Benz, Peugeot and Citroën brands of vehicles in Ghana, our product line covers the full spectrum of automobile needs including saloon cars, SUVs, vans, trucks and buses.
                We also deal in the sale of genuine spare parts, and are authorized distributors of Energizer Batteries, Power Oils and Motul Oils in Ghana. We guarantee reliable after-sales service support, including body and paint repair works.</p>
                 
             </div>
@@ -198,7 +207,7 @@
 </section>
 <section class="section2">
 <h3>
-    Discover Silver Star Auto
+    Discover Two Friends 
 </h3>
  
    <div class="row">
@@ -215,9 +224,9 @@
     <div class="img">
         <img src="img/car2.c74a0126.png"/>
     </div>
-    <h4>Exciting New Models</h4>
+    <h4>BOOK A TEST DRIVE ONLINE</h4>
     <p>
-        Check out the new GLE, GLC, and A-Class 2020 Mercedes-Benz models, equipped with state-of-the-art MBUX intelligent infotainment system
+      Experience our new vehicles by booking a test drive appointment online. Simply enter your contact details and the brand and model of your choice
     </p>
 
 </div>
@@ -241,11 +250,11 @@
 <div class="over">
   <h3>BOOK A TEST DRIVE NOW</h3>
                 <p>
-                  Refined, composed and a pleasure to drive. Experience it for yourself by booking an appointment with your nearest Silver Star Auto Retailer at a time that suits you.
+                  Refined, composed and a pleasure to drive. Experience it for yourself by booking an appointment with your nearestTwo Friends and Co Company Retailer at a time that suits you.
                 </p>
 
 <button class="btn btn-secondary">
-    <a  href="#">Book an appointment</a>
+  <a  href="/testdrive">Book an appointment</a>
 </button>
 </div>
 

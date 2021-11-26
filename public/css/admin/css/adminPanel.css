@@ -1,0 +1,88 @@
+* , ::after , ::before{
+
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+
+:root{
+
+    font-size: 62.5%;
+}
+
+h1{
+    padding: 1rem;
+    text-transform: capitalize;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+}
+section{
+
+    padding: 5rem;
+    width: 100%;
+}
+
+.card-body a{
+    cursor: pointer;
+    text-decoration: none;
+    text-transform: capitalize;
+    color: black;
+  
+}
+
+.card-body a:active ,.card-body a:hover{
+    
+    color: blue;
+  
+}
+h3{cursor: pointer;
+    text-decoration: none;
+    text-transform: capitalize;
+    color: black;
+    font-size: 2rem;
+}
+div{
+
+    padding: 2rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+    margin: 2rem;
+}
+
+div.card-body{
+    padding: 2rem;
+    font-size: 2rem;
+    font-weight: bolder;
+    letter-spacing: 0.03rem;
+    text-align: center;
+    transition: transform .4s ease-in-out;
+}
+div.card-body:hover{
+ transform: scale(1.1);
+}
+
+button {
+
+    float: right;
+    width: 10%;
+    padding: 0.8rem;
+    background-color: black;
+    color: white;
+    font-size: 14px;
+    font-family: 'Times New Roman', Times, serif;
+    outline: none;
+    border: none;
+     border-radius: 10px;
+     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+     transition: all  0.4s ease-in-out;
+}
+
+button:hover ,button:active{
+    background-color: red;
+    transform:  scale(1.1);
+}
+
+a{
+    color: white;
+    text-decoration: none;
+}

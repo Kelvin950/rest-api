@@ -14,7 +14,7 @@ router.route("/signup")
 .post(
  
     [
-        body("name" , "name should be alphabetical").isAlpha().not().isEmpty() ,
+        body("name" , "Username should be alphabetical").isAlpha().not().isEmpty() ,
         body("email" , "Email is incorrect").isEmail().custom((value , {req})=>{
           return  User.findOne({email:value}).then(user=>{
               console.log(user);
@@ -24,8 +24,8 @@ router.route("/signup")
             });
         }).normalizeEmail(),
 
-        body("password" , "Password should be eight to 16 characters long and alphanumeric").trim().isLength({min:8 , max:16}).isAlphanumeric(),
-        body("confirmPassword" ,"Password should be eight to 16 characters long and alphanumeric").trim().isLength({min:8 , max:16}).isAlphanumeric().custom((value , {req})=>{
+        body("password" , "Password should be eight to 16 characters long and alphanumeric").trim().isLength({min:8 , max:16}),
+        body("confirmPassword").trim().isLength({min:8 , max:16}).custom((value , {req})=>{
                if(value !== req.body.password){
                    return Promise.reject("Passwords do not match");
                }
@@ -41,9 +41,9 @@ router.route("/signup")
 router.route("/login" )
 .get(auth.login)
 .post(
-// [
-//         body("email" ,"Incorrect email").isEmail().trim() , body("password" , "Password should be eight to 16 characters long and alphanumeric").isAlphanumeric().isLength({min:8 , max:16})
-//     ],
+[
+        body("email" ,"Incorrect email or password").isEmail().trim() , body("password" , "Incorrect email or password").isLength({min:8 , max:16})
+    ],
     authController.login
 );
 

@@ -22,7 +22,9 @@ const facebookTokenStrategy = require("passport-facebook-token");
 const checkErrors = function (req, res, next, errorMessage, errorStatusCode) {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
+    // console.log(errors.array())
     errorHandler(errorMessage, errorStatusCode, errors.array());
+    
   }
 };
 exports.signUp = async (req, res, next) => {
@@ -32,17 +34,18 @@ exports.signUp = async (req, res, next) => {
     const name = req.body.name;
     const email = req.body.email;
     const password = req.body.password;
-
-    console.log("worked")
+     const subscription =  req.body.subscription;
+    // console.log("worked")
     const hashedpassword = await bcrypt.hash(password, 12);
-    console.log(hashedpassword);
+    // console.log(hashedpassword);
     const user = new User({
       name: name,
       email: email,
       password: hashedpassword,
+      subscription: Boolean(subscription)
     });
     const newUser = await user.save();
-    console.log(newUser);
+    // console.log(newUser);
     // const info = await transporter.sendMail({
     //   to: email,
     //   from: process.env.myemail,
@@ -55,6 +58,10 @@ exports.signUp = async (req, res, next) => {
     // });
     res.redirect("/login")
   } catch (err) {
+    // console.log(err);
+    let error=err.data.map(data=>data.msg).join('\n')
+    req.flash("error" ,error )
+    // console.log(error);
     res.redirect("/signup")
   }
 };
@@ -65,17 +72,21 @@ exports.login = async (req, res, next) => {
     const email = req.body.email;
     const password = req.body.password;
 
-    console.log(email , password)
+    // console.log(email , password)
     const user = await User.findOne({ email: email });
     if (!user) {
-      errorHandler("User does not exist", 401);
+      req.flash("error" ,"Incorrect password or email" )
+   
+   return res.redirect("/login");
     }
     const isEqual = await bcrypt.compare(password, user.password);
     if (!isEqual) {
-      errorHandler( "password  do not match", 401);
-    }
-    console.log(req.useragent);
-    console.log(req.ip);
+      req.flash("error" ,"Incorrect password or email")
+   
+    return  res.redirect("/login");}
+    // }}
+    // console.log(req.useragent);
+    // console.log(req.ip);
    
     // const logInInfo  = await transporter.sendMail({
     //     to:email,
@@ -108,14 +119,17 @@ exports.login = async (req, res, next) => {
     //   err.statusCode = 500;
     // }
     // next(err);
-    console.log(err)
+    // console.log(err)
+    let error=err.data.map(data=>data.msg).join('\n')
+    req.flash("error" ,error )
+    // console.log(error);
     res.redirect("/login");
   }
 };
 
 exports.postLogout = (req, res, next) => {
   req.session.destroy(err => {
-    console.log(err);
+    // console.log(err);
     res.redirect('/');
   });
 };
@@ -170,7 +184,7 @@ exports.resetPassword = async (req, res, next) => {
     if (!passwordToken) {
       errorHandler("Invalid token or token has expired", 404);
     }
-    console.log(passwordToken);
+    // console.log(passwordToken);
     const isValid = await bcrypt.compare(resetToken, passwordToken.token);
     if (!isValid) {
       errorHandler("Invalid token or token has expired", 404);
@@ -209,7 +223,7 @@ passport.serializeUser(function (user, done) {
 passport.deserializeUser(function (obj, done) {
   done(null, obj);
 });
-console.log(process.env.facebook_Client_ID);
+// console.log(process.env.facebook_Client_ID);
 exports.facebookPassport = passport.use(
   new facebookTokenStrategy(
     {
@@ -218,7 +232,7 @@ exports.facebookPassport = passport.use(
       fbGraphVersion: "v3.0",
     },
     (accessToken, refreshToken, profile, done) => {
-      console.log(profile);
+      // console.log(profile);
       User.findOrCreate({ facebookId: profile.id }, function (err, user) {
         return cb(err, user);
       });

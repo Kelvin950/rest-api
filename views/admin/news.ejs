@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Contact V10</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="/css/admin/news/images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/css/admin/news/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/css/admin/news/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/css/admin/news/vendor/animate/animate.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/css/admin/news/vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/css/admin/news/vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/css/admin/news/vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/css/admin/news/css/util.css">
+	<link rel="stylesheet" type="text/css" href="/css/admin/news/css/main.css">
+<!--===============================================================================================-->
+<title><%=title%></title>
+</head>
+<body>
+
+    <%if(message){%>
+        <div class="message" style="margin:auto; margin-top: 30px; width: 30%; 
+      border: 1px solid  rgb(76, 76, 240) ;background-color: rgb(119, 119, 245);padding: 0.3rem; border-radius:10px ;text-align: center;font-size: 25px;">
+          <p><%=message%></p>
+      </div>
+    <% }%>
+    <%if(error){%>
+        <div class="message" style="margin:auto; margin-top: 30px; width: 30%; 
+      border: 1px solid rgb(233, 29, 29);background-color: rgb(243, 78, 78);padding: 0.3rem; border-radius:10px ;text-align: center;font-size: 25px;">
+          <p><%=error%></p>
+      </div>
+    <% }%>
+    <header style="padding: 20px; text-decoration: underline; color: black;">
+        <h2>
+            <a href="/admin/adminPanel" style="color: black;"><i class="fas fa-home fa-2x"></i></a>
+        </h2>
+    </header>
+	<div class="container-contact100">
+      
+		<div class="wrap-contact100">
+
+			<form class="contact100-form validate-form" action="/admin/send" method="POST">
+				<span class="contact100-form-title">
+					Send News Letter
+				</span>
+
+				
+				<div class="wrap-input100 validate-input" data-validate = "Please enter your email: e@a.x">
+					<input class="input100" type="text" name="template_id" placeholder="Template Id">
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="container-contact100-form-btn">
+					<button class="contact100-form-btn">
+						<span>
+							<i class="fa fa-paper-plane-o m-r-6" aria-hidden="true"></i>
+							Send
+						</span>
+					</button>
+				</div>
+				
+				
+
+			
+				</div>
+				
+			</form>
+			
+		</div>
+	
+	</div>
+	
+				
+
+
+	<div id="dropDownSelect1"></div>
+
+<!--===============================================================================================-->
+	<script src="/css/admin/news/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="/css/admin/news/vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+	<script src="/css/admin/news/vendor/bootstrap/js/popper.js"></script>
+	<script src="/css/admin/news/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="/css/admin/news/vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="/css/admin/news/vendor/daterangepicker/moment.min.js"></script>
+	<script src="/css/admin/news/vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+	<script src="/css/admin/news/vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+	<script src="/css/admin/news/js/main.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-23581568-13');
+</script>
+
+</body>
+</html>

@@ -48,3 +48,16 @@ exports.isAuth =  (req,res,next)=>{
     }
     next();
 }
+exports.isAdminAuth =  (req,res,next)=>{
+    if(!req.session.isLoggedIn){
+        res.redirect("/admin");
+    }
+    next();
+}
+exports.isAdmin =(req ,res,next)=>{
+    if(!req.user.admin){
+        res.redirect("/Error403");
+    }
+    next();
+     
+}

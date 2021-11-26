@@ -3,9 +3,8 @@ const express =  require("express");
 const Router =  express.Router();
 const carController=   require("../controller/carController")
 const auth =  require("../util/isAuth")
-express.json()
-express.urlencoded({extended:false})
-
+// Router.use(express.json())
+// Router.use(express.urlencoded({extended:false}))
 
 Router.route("/")
 .get(auth.isAuth ,carController.getCars)

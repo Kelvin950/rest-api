@@ -26,8 +26,11 @@ const userSchema = new  Schema({
       type:Boolean,
       default:false
   },
-  facebookId:String
-
+  facebookId:String,
+ subscription:{
+     type:Boolean , 
+     default:false
+ }
 
 })
 

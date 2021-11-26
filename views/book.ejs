@@ -7,7 +7,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-	<title>Booking Form HTML Template</title>
 
 	<!-- Google font -->
 	<link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
@@ -17,6 +16,7 @@
 
 	<!-- Custom stlylesheet -->
 	<link type="text/css" rel="stylesheet" href="css/stylebook.css" />
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -25,15 +25,22 @@
 		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 		<![endif]-->
 
+		<title><%=title%></title>
 </head>
 
 <body>
+    
+	
 
     <%if(message){%>
         <div id="message" style="margin:auto; margin-top: 30px; width: 60%; 
         border: 1px solid rgb(75, 75, 228);background-color: rgb(119, 119, 245);padding: 1rem; border-radius:10px ;text-align: center;font-size: 25px;"><%=message%></div>
     <% }%>
-
+	<div style="padding: 20px; text-decoration: underline; color: blue;">
+		<h2>
+			<a href="/"><i class="fas fa-home fa-1x"></i></a>
+		</h2>
+	</div>
 	<div id="booking" class="section">
 		<div class="section-center">
 			<div class="container">

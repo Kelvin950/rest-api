@@ -1,0 +1,151 @@
+
+
+* , ::after , ::before{
+
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+
+:root{
+
+    font-size: 62.5%;
+}
+
+h1{
+    padding: 4rem;
+    text-transform: uppercase;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+     text-align: center;
+}
+
+form{
+
+    display: inline;
+}
+article{
+    width: 100%;  
+    min-height: 100vh;
+
+    padding: 15px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    z-index: 1;
+}
+
+article::before{
+    content: "";
+  display: block;
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(93,84,240,0.5);
+  background: -webkit-linear-gradient(left, rgba(0,168,255,0.5), rgba(185,0,255,0.5));
+  background: -o-linear-gradient(left, rgba(0,168,255,0.5), rgba(185,0,255,0.5));
+  background: -moz-linear-gradient(left, rgba(0,168,255,0.5), rgba(185,0,255,0.5));
+  background: linear-gradient(left, rgba(0,168,255,0.5), rgba(185,0,255,0.5));
+  pointer-events: none;
+}
+section{
+
+    padding: 5rem;
+    width: 70%;
+    height: 35rem;
+    overflow-y: scroll;
+  border-radius: 1.5rem;
+    /* border:  3px solid red; */
+    margin: 0 auto;
+    margin-top: 5rem;
+    box-shadow: 0 3px 20px 0px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0 3px 20px 0px rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 0 3px 20px 0px rgba(0, 0, 0, 0.1);
+    -o-box-shadow: 0 3px 20px 0px rgba(0, 0, 0, 0.1);
+    -ms-box-shadow: 0 3px 20px 0px rgba(0, 0, 0, 0.1);
+    background-color: rgba(250, 250, 250, 0.5)
+}
+
+
+
+div{
+
+    border-radius: 1.5rem;
+    padding: 3rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+    margin: 1rem;
+    width: 60%;
+    margin: 0 auto;
+    margin-bottom: 2rem;
+
+}
+
+div.card-body{
+    padding: 1rem;
+    font-size: 1.5rem;
+    border-radius: 1.5rem;
+    font-weight: bolder;
+    letter-spacing: 0.03rem;
+    text-align: center;
+    transition: transform .4s ease-in-out;
+   
+}
+div.card-body:hover{
+ transform: scale(1.1);
+}
+
+h4{
+    font-size: 2rem;
+    letter-spacing: 00.02rem;
+    font-family: 'Times New Roman', Times, serif
+;
+  font-weight: bolder;
+}
+
+button{
+
+     width: 31%;
+     padding: 1rem;
+     outline: transparent;
+     border-radius: 0.5rem;
+     border: black transparent;
+     margin: 1rem; 
+    background-color: #000;
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: bolder;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+
+button[class="decline"]{
+
+background-color: red;
+border-color: red;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    border-radius: 0.5rem;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1fa;
+    border-radius: 0.2rem;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: rgb(95, 95, 95);
+    border-radius: 0.5rem;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgb(90, 89, 89);
+  }

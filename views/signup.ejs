@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Login V17</title>
+	<title><%=title%></title></title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
@@ -28,9 +28,16 @@
 <!--===============================================================================================-->
 </head>
 <body>
+	<%if(error){%>
+		<div class="message" style="margin:auto; margin-top: 30px; width: 30%; 
+	  border: 1px solid rgb(233, 29, 29);background-color: rgb(243, 78, 78);padding: 0.3rem; border-radius:10px ;text-align: center;font-size: 25px;">
+		  <p><%=error%></p>
+	  </div>
+	<% }%>
+	
 	<div style="padding: 20px; text-decoration: underline; color: blue;">
 		<h2>
-			<a href="#">Back <---</a>
+			<a href="/">Back <---</a>
 		</h2>
 	</div>
 	<div class="limiter">
@@ -38,7 +45,7 @@
 			<div class="wrap-login100">
 				<form class="login100-form validate-form" action="/signup" method="POST">
 					<span class="login100-form-title p-b-34">
-						Account Login
+						Account Sign Up
 					</span>
 					
 					<div class="wrap-input100 rs1-wrap-input100 validate-input m-b-20" data-validate="Type user name">
@@ -57,6 +64,17 @@
 						<input class="input100" type="password" name="confirmPassword" placeholder="confirm Password">
 						<span class="focus-input100"></span>
 					</div>
+						
+					<div class="">
+						<input type="checkbox" style="font-size: 20px; font-weight: bolder; color: darkgray; width: 30px; padding: 10px;  margin-bottom: 10px;"
+						name="subscription"  <%if(`checked`){%> value="true" <%}%>
+						><label style="font-size: 20px; 
+						color: darkgray;">
+							Subcribe to News Letter
+						</label>
+					</div>
+
+
 					<div class="container-login100-form-btn">
 						<button class="login100-form-btn">
 							Sign in

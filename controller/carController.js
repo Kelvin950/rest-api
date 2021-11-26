@@ -13,9 +13,9 @@ function errorCode(err){
 exports.getSearch = async (req, res, next) => {
   try {
       const {search} = req.query;
- console.log("dsjdds")
+//  console.log("dsjdds")
     let cars = await Car.find({$text:{$search:search}}, {score:{$meta:"textScore"}}).sort({score:{$meta:"textScore"}});
-    console.log(cars);
+    // console.log(cars);
 
     if (!cars) {
       return   res.render("carPages" , {
@@ -44,9 +44,21 @@ exports.getSearch = async (req, res, next) => {
     });
 
     res.statusCode = 200;
+    let message=  req.flash("message");
+      let error= req.flash("error");
+    if(message.length > 0 && error.length <= 0){
+        message=message[0]
+         error=null
+    }else{
+        message=null;
+        error=error[0]
+    }
+    
   res.render("carPages" , {
       title:search ,
        cars:cars,
+        message:message , 
+        error:error
        
   });
   } catch (err) {
@@ -118,7 +130,7 @@ exports.getSingleCar = async (req , res, next)=>{
              } )
         }
         catch(err){
-           console.log(err)
+        
            res.statusCode  =  errorCode(err);
         }
      
@@ -131,7 +143,7 @@ exports.getSingleCar = async (req , res, next)=>{
 exports.getCarOntype   = async (req,res,next)=>{
 
  const{type ,value} = req.params ;
-console.log(value , type)
+// console.log(value , type)
  try{
 
       const obj = {[type]:value}
@@ -171,12 +183,12 @@ console.log(value , type)
 
 exports.getCarOnMake   = async (req,res,next)=>{
 
-  const{make} = req.params ;
- console.log(make)
+  const{make} = req.params;
+//  console.log(make)
   try{
  
       //  const obj = {[type]:value}
-   let cars =  await Car.find({ make:make })
+   let cars =  await Car.find({ make:make.toUpperCase() })
      
      if(cars.length<=0){
    return   res.render("carPages" , {
@@ -200,7 +212,7 @@ exports.getCarOnMake   = async (req,res,next)=>{
        });
    
        res.statusCode = 200;
-      console.log(cars)
+      // console.log(cars)
       let message=  req.flash("message");
       let error= req.flash("error");
     if(message.length > 0 && error.length <= 0){
@@ -322,7 +334,7 @@ exports.getFav=  async (req,res,next)=>{
        })
         }
       
-      console.log(fav)
+      // console.log(fav)
       
          res.render("carPages" , {
           
@@ -331,7 +343,7 @@ exports.getFav=  async (req,res,next)=>{
       
          })
         }catch(err){
-          console.log(err)
+          // console.log(err)
           res.statusCode =  errorCode(err);
         }
 }

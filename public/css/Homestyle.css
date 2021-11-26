@@ -172,6 +172,48 @@ color:white;
 
 }
 
+.searchbar{
+
+    width: 100%;
+    padding: 10rem;
+}
+
+.searchbar input{
+  
+    width: 70%;
+       padding: 2rem;
+  
+     border-radius: 0.2rem;
+     font-size: 1.8rem;
+      border: none;
+    font-family: 'Times New Roman', Times, serif;
+
+
+}
+.searchbar input:focus{
+
+    border: none;
+    outline: none;
+}
+.searchbar input::placeholder{
+    font-size: 2rem;
+    font-weight: bold;
+}
+.searchbar input[type="submit"]{
+    
+    width: 10%;
+    padding: 2.6rem;
+      font-size: 1.8rem;
+     
+      transition: transform .4s ease-in-out;
+}
+
+.searchbar input[type="submit"]:hover{
+     
+    transform: scale(1.03);
+    
+}
+
 .description p{
     width: 60rem;
     text-align: justify;

@@ -1,6 +1,19 @@
 const mongoose = require('mongoose')
 const Schema =  mongoose.Schema 
 
+const bookingsSchema =  new Schema({
+    
+        name:{
+            type:String,
+            required:true
+        } ,
+        phoneNumber:String,
+        model:String ,
+        make:String ,
+        date:Date , 
+          time:String
+   }
+);
 
 bookSchema = new Schema({
     user:{
@@ -8,18 +21,9 @@ bookSchema = new Schema({
         ref:'User'
     },
 
-    book:[
-        {
-         name:{
-             type:String,
-             required:true
-         } ,
-         phoneNumber:String,
-         model:String ,
-         make:String ,
-         date:String ,
-         time:String
-    }]
+    books:[
+        bookingsSchema
+       ]
 }
     ,
     {
