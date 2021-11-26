@@ -134,8 +134,9 @@ app.use((req ,res,next)=>{
 
 
 
-// app.listen(3000 , ()=>{
-//     console.log("http://localhost:3000")
-// });
-
+const { PORT=3000, LOCAL_ADDRESS='0.0.0.0' } = process.env
+app.listen(PORT, LOCAL_ADDRESS, () => {
+  
+    console.log('server listening at', PORT);
+});
 
