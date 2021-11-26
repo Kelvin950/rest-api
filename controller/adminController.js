@@ -398,9 +398,8 @@ exports.acceptBookings=  async (req ,res,next)=>{
 
   }catch(err){
 
-    console.log(err.response.body)
+    console.log(err)
     res.statusCode = 404
-    
     req.flash("error" ,"Internal Server error")
     res.redirect("/admin/bookings")
   }
