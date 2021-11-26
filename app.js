@@ -21,8 +21,8 @@ const User =  require("./Model/User")
 const compression=require("compression")
 
 require("dotenv").config();
-// app.use(helmet());
-// app.use(compression());
+app.use(helmet());
+app.use(compression());
  connectDb();
 app.use(logger("dev"));
 app.use((req,res,next)=>{
