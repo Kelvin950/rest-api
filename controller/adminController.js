@@ -368,7 +368,7 @@ exports.acceptBookings=  async (req ,res,next)=>{
     const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     const bookId = req.params.bookId ;
     const specificId =  req.params.specificId
-   const book =  await Book.findById(bookId).populate("user");
+   const book =  await Book.findById(bookId).populate("user")
 // console.log(book)
    if(!book){
        
